@@ -2,9 +2,11 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import PhoneModelForm
 from .models import PhoneModel
-
 # Create your views here.
-
+def first_view(request):
+    templates="layout.html"
+    context={}
+    return render(request, templates, context)
 
 def addPhone(request):
     form = PhoneModelForm()
