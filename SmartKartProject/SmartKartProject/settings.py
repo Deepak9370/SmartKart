@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'PhoneHub',
     "crispy_forms",
     "crispy_bootstrap5",
+    "AuthApp",
 ]
 
 
