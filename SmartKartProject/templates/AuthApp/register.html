@@ -11,7 +11,9 @@
     <form method="post" style="width:50%; margin-left:25%;">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" value="Register" class="btn btn-success">
-        <a href="{% url 'login' %}" class="btn btn-warning">Already have an account</a>
+        <div class="text-center">
+            <input type="submit"  value="Register" class="btn btn-success">
+            <a href="{% url 'login' %}" class="btn btn-warning">Already have an account</a>
+        </div>
     </form>
-{% endblock %}
+{%endblock%}

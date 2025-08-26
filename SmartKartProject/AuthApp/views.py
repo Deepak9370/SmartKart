@@ -1,6 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib import messages
+
 
 # Create your views here.
 
@@ -20,9 +22,13 @@ def loginview (request):
         u = request.POST["un"]
         p = request.POST["pw"]
         user = authenticate(username=u, password=p)
-        if user is not None:
+        if user:
             login(request, user)
+            messages.success(request, 'Login Successful')
             return redirect("show-phone")
+
+        else:
+            messages.error(request, 'Invalid Credentials')
     template_name = "AuthApp/login.html"
     context ={}
     return render(request, template_name, context)

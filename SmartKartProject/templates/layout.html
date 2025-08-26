@@ -18,18 +18,33 @@
       <div class="navbar-nav">
 
           {% if user.is_authenticated %}
-            <a class="nav-link active" href="{% url 'logout' %}">Hellow {{user.username}},Logout</a>
+            <a class="nav-link active" href="{% url 'logout' %}"> {{user.username}},Logout</a>
           {% else %}
             <a class="nav-link active" href="{% url 'register' %}">Register</a>
             <a class="nav-link active" href="{% url 'login' %}">Login</a>
+
           {% endif %}
         <a class="nav-link active" href="{% url 'add-phone' %}">AddPhone</a>
         <a class="nav-link active" href="{% url 'show-phone' %}">ShowPhone</a>
+        <a class="nav-link active" href="{% url 'about' %}">AboutUs</a>
+        <a class="nav-link active" href="{% url 'services' %}">Services</a>
+        <a class="nav-link active" href="{% url 'faq' %}">FAQs</a>
 
       </div>
     </div>
   </div>
 </nav><br>
+    {% if messages %}
+  <div style="margin-left:80%;">
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+<br>
 
     {% block content %}
        <p>First Phone</p>

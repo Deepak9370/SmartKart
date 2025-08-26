@@ -13,8 +13,10 @@
         <lable>Enter Username:</lable><br>
         <input type="text" name="un" class="form-control"><br><br>
         <lable>Enter Password:</lable><br>
-        <input type="password" name="pw" class="form-control"><br><br>
-        <input type="submit" value="LOGIN" class="btn btn-success">
-        <a href="{% url 'register' %}" class="btn btn-info" style="background-color: #F8A00B;">Create an account</a>
+        <input type="password" name="pw" class="form-control"><br>
+        <div class="text-center">
+        <input type="submit" value="login" class="btn btn-success">
+        <a href="{% url 'register' %}" class="btn btn-info">Create an account</a>
+        <div/>
     </form>
 {% endblock %}

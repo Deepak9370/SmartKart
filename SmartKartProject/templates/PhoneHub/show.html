@@ -32,6 +32,10 @@
             </tr>
         {% endfor %}
     </table>
-    <br><br>
+
+    <br>
+        {% for msg in massages %}
+        <p class="alert alert-danger"> {{msg}} </p>
+        {% endfor %}
     <a href="{% url 'add-phone' %}"><button class="btn btn-primary" style="margin-left:45%;">Add Phone</button></a>
 {% endblock %}
