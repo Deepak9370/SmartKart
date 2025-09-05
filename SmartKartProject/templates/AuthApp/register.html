@@ -2,18 +2,139 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-    <title>Register Page</title>
+<title>Register | PhoneHub</title>
 {% endblock %}
 
-
 {% block content %}
-    <h1 style="text-align:center;">Registration</h1>
-    <form method="post" style="width:50%; margin-left:25%;">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <div class="text-center">
-            <input type="submit"  value="Register" class="btn btn-success">
-            <a href="{% url 'login' %}" class="btn btn-warning">Already have an account</a>
-        </div>
-    </form>
-{%endblock%}
+<style>
+  body {
+    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
+                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+  }
+
+  .register-container {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.3);
+    width: 450px;
+    margin: 5% auto;
+    animation: fadeInUp 1s ease;
+  }
+
+  .register-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 12px rgba(0,0,0,0.4);
+    animation: fadeZoom 1.2s ease;
+  }
+
+  label {
+    color: #f1f1f1;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: block;
+    text-align: left;
+  }
+
+  .form-control {
+    margin-bottom: 18px;
+    border-radius: 12px;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    transition: 0.3s ease;
+  }
+
+  .form-control:focus {
+    transform: scale(1.02);
+    box-shadow: 0 0 15px rgba(22,185,211,0.7);
+    outline: none;
+  }
+
+  .btn {
+    border-radius: 12px;
+    padding: 10px 22px;
+    transition: all 0.3s ease-in-out;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-success {
+    background: linear-gradient(135deg, #16B9D3, #009688);
+    border: none;
+    color: #fff;
+  }
+  .btn-success:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,150,136,0.5);
+  }
+
+  .btn-warning {
+    background: linear-gradient(135deg, #ff9800, #f44336);
+    border: none;
+    color: #fff;
+  }
+  .btn-warning:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(244,67,54,0.5);
+  }
+
+  @keyframes fadeInUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes fadeZoom {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+</style>
+
+<div class="register-container">
+  <h1>Create Account ✨</h1>
+  <form method="post" style="width:100%;">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      {{ form.username.label_tag }}
+      <input type="text" id="username" name="username" class="form-control" placeholder="Enter Username">
+    </div>
+
+    <div class="mb-3">
+      {{ form.email.label_tag }}
+      <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email">
+    </div>
+
+    <div class="mb-3">
+      {{ form.password1.label_tag }}
+      <input type="password" id="password" name="password1" class="form-control" placeholder="Enter Password">
+    </div>
+
+    <div class="mb-3">
+      {{ form.password2.label_tag }}
+      <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password">
+    </div>
+
+    <div class="text-center mt-3">
+      <input type="submit" value="Register" class="btn btn-success">
+      <a href="{% url 'login' %}" class="btn btn-warning">Already have an account</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+<style>
+footer {
+  display: none !important;
+}
+</style>
+{% endblock %}

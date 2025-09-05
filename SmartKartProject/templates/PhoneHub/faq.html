@@ -4,51 +4,119 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  body {
+    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
+                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    width:100%;
+    min-height:1000px;
+  }
+
+  .glass-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    animation: fadeInUp 1s ease;
+  }
+
+  h2 {
+    font-weight: 700;
+    color: #00e5ff;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+  }
+
+  .highlight {
+    font-weight: 600;
+    color: #ffd740;
+  }
+
+  .accordion-item {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .accordion-button {
+    background: transparent;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+  }
+  .accordion-button:focus {
+    box-shadow: none;
+  }
+  .accordion-button:not(.collapsed) {
+    color: #00e5ff;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .accordion-body {
+    background: rgba(0,0,0,0.3);
+    color: #ddd;
+    font-size: 0.95rem;
+    padding: 20px;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
 <div class="container mt-5">
-    <h2 class="text-center fw-bold text-secondary">Frequently Asked Questions</h2>
-    <div class="accordion mt-4 shadow-lg rounded-3" id="faqAccordion">
+  <div class="glass-box text-center mb-4">
+    <h2>Frequently Asked <span class="highlight">Questions</span></h2>
+    <p class="lead mt-2">Here are some common questions our customers ask before shopping at <b>PhoneHub</b>.</p>
+  </div>
 
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
-                    Do you provide warranty on phones?
-                </button>
-            </h2>
-            <div id="faq1" class="accordion-collapse collapse show">
-                <div class="accordion-body">
-                    Yes, every phone sold at <b>PhoneHub</b> comes with a manufacturer warranty.
-                </div>
-            </div>
+  <div class="accordion" id="faqAccordion" data-aos="fade-up">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+          Do you provide warranty on phones?
+        </button>
+      </h2>
+      <div id="faq1" class="accordion-collapse collapse show">
+        <div class="accordion-body">
+          Yes, every phone sold at <b>PhoneHub</b> comes with a manufacturer warranty.
         </div>
-
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
-                    What payment methods do you accept?
-                </button>
-            </h2>
-            <div id="faq2" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                    We accept UPI, Debit/Credit cards, Net Banking, and Cash on Delivery.
-                </div>
-            </div>
-        </div>
-
-        <div class="accordion-item">
-            <h2 class="accordion-header">
-                <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
-                    Can I return or exchange a phone?
-                </button>
-            </h2>
-            <div id="faq3" class="accordion-collapse collapse">
-                <div class="accordion-body">
-                    Yes, we offer a 7-day hassle-free return/replacement policy for eligible devices.
-                </div>
-            </div>
-        </div>
-
+      </div>
     </div>
 
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+          What payment methods do you accept?
+        </button>
+      </h2>
+      <div id="faq2" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          We accept UPI, Debit/Credit cards, Net Banking, and Cash on Delivery.
+        </div>
+      </div>
+    </div>
 
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+          Can I return or exchange a phone?
+        </button>
+      </h2>
+      <div id="faq3" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          Yes, we offer a 7-day hassle-free return/replacement policy for eligible devices.
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

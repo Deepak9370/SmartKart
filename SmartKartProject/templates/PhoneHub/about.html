@@ -4,24 +4,121 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  body {
+    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
+                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    width:100%;
+    min-height:1000px;
+  }
+
+  .glass-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    animation: fadeInUp 1s ease;
+  }
+
+  h2, h3 {
+    font-weight: 700;
+    color: #00e5ff;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+  }
+
+  .highlight {
+    font-weight: 600;
+    color: #ffd740;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #673ab7, #3f51b5);
+    border: none;
+    border-radius: 12px;
+    transition: 0.3s;
+  }
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(63,81,181,0.5);
+  }
+
+  .icon-card {
+    background: rgba(10, 223, 223, 0.171);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  .icon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+  .icon-card i {
+    font-size: 40px;
+    color: #00e5ff;
+    margin-bottom: 15px;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
 <div class="container mt-5">
-    <div class="row align-items-center">
-        <div class="col-md-6 mb-4" data-aos="fade-right">
-            <h2 class="fw-bold text-primary">About PhoneHub</h2>
-            <p class="lead mt-3">
-                Welcome to <b>PhoneHub</b>, your trusted destination for the latest smartphones.
-                Our mission is to make cutting-edge technology affordable and accessible to everyone.
-            </p>
-            <p>
-                Whether you're a tech enthusiast looking for the latest flagship model or someone searching for a budget-friendly device, PhoneHub has something for you.
-                With easy ordering, secure payments, and fast delivery, we ensure a smooth shopping experience every time.
-            </p>
-            <a href="{% url 'show-phone' %}" class="btn btn-lg btn-primary mt-3">Explore Phones</a>
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
-            <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=900&q=80"
-                 class="img-fluid rounded shadow-lg" alt="Smartphones">
-        </div>
+  <!-- About Section -->
+  <div class="glass-box row align-items-center mb-5">
+    <div class="col-md-6 mb-4" data-aos="fade-right">
+      <h2>About <span class="highlight">PhoneHub</span></h2>
+      <p class="lead mt-3">
+        Welcome to <b>PhoneHub</b>, your trusted destination for the <span class="highlight">latest smartphones</span>.
+        Our mission is to make cutting-edge technology affordable and accessible to everyone.
+      </p>
+      <p>
+        Whether you're a <b>tech enthusiast</b> looking for the latest flagship model or someone searching for a budget-friendly device, PhoneHub has something for you.
+        With <span class="highlight">easy ordering</span>, <span class="highlight">secure payments</span>, and <span class="highlight">fast delivery</span>, we ensure a smooth shopping experience every time.
+      </p>
+      <a href="{% url 'show-phone' %}" class="btn btn-lg btn-primary mt-3">📱 Explore Phones</a>
     </div>
+    <div class="col-md-6" data-aos="fade-left">
+      <img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?auto=format&fit=crop&w=900&q=80"
+           class="img-fluid rounded shadow-lg" alt="Smartphones">
+    </div>
+  </div>
+
+  <!-- Why Choose Us -->
+  <div class="text-center mb-5">
+    <h3>Why Choose <span class="highlight">PhoneHub?</span></h3>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-4 mb-4">
+      <div class="icon-card">
+        <i class="fas fa-bolt"></i>
+        <h5>Fast Delivery</h5>
+        <p>We deliver your smartphones at lightning speed, right to your doorstep.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="icon-card">
+        <i class="fas fa-shield-alt"></i>
+        <h5>Secure Payments</h5>
+        <p>End-to-end encryption ensures your transactions are always safe.</p>
+      </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="icon-card">
+        <i class="fas fa-mobile-alt"></i>
+        <h5>Latest Models</h5>
+        <p>From budget phones to flagship devices, we bring you the latest releases.</p>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- FontAwesome for Icons -->
+<script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 {% endblock %}

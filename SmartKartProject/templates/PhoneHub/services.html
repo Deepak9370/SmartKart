@@ -4,41 +4,114 @@
 {% endblock %}
 
 {% block content %}
+<style>
+  body {
+    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
+                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    width:100%;
+    min-height:1000px;
+  }
+
+  .glass-box {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    color: #fff;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    animation: fadeInUp 1s ease;
+  }
+
+  h2, h3 {
+    font-weight: 700;
+    color: #00e5ff;
+    text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+  }
+
+  .highlight {
+    font-weight: 600;
+    color: #ffd740;
+  }
+
+  .service-card {
+    background: rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    transition: 0.3s;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  .service-card img {
+    border-radius: 15px;
+    margin-bottom: 20px;
+    transition: 0.4s;
+  }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+  }
+  .service-card:hover img {
+    transform: scale(1.05);
+  }
+
+  .service-card h5 {
+    color: #00e5ff;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    color: #ddd;
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
 <div class="container mt-5">
-    <h2 class="text-center fw-bold text-warning mb-4">Our Services</h2>
-    <div class="row g-4">
-        <div class="col-md-4" data-aos="zoom-in">
-            <div class="card shadow-lg h-100 border-0 rounded-4">
-                <img src="https://images.unsplash.com/photo-1663245482988-22fad02654e3?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                     class="card-img-top rounded-top-4" alt="Latest Smartphones">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold">Latest Smartphones</h5>
-                    <p class="card-text">Stay updated with the newest launches from Apple, Samsung, OnePlus, and more.</p>
-                </div>
-            </div>
-        </div>
+  <!-- Services Header -->
+  <div class="glass-box text-center mb-5">
+    <h2>Our <span class="highlight">Services</span></h2>
+    <p class="lead mt-3">
+      We bring you not only the best smartphones but also
+      <span class="highlight">premium services</span> to enhance your experience.
+    </p>
+  </div>
 
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
-            <div class="card shadow-lg h-100 border-0 rounded-4">
-                <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                     class="card-img-top rounded-top-4" alt="Easy EMI">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold">Easy EMI Options</h5>
-                    <p class="card-text">Shop without worries with our flexible EMI and Buy Now, Pay Later options.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
-            <div class="card shadow-lg h-100 border-0 rounded-4">
-                <img src="https://plus.unsplash.com/premium_photo-1682088344933-f70f2a5a083f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                     class="card-img-top rounded-top-4" alt="Repair & Support">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold">Repair & Support</h5>
-                    <p class="card-text">Our experts provide fast repair services and 24/7 customer support for your devices.</p>
-                </div>
-            </div>
-        </div>
+  <!-- Services Grid -->
+  <div class="row g-4">
+    <div class="col-md-4" data-aos="zoom-in">
+      <div class="service-card h-100">
+        <img src="https://images.unsplash.com/photo-1663245482988-22fad02654e3?q=80&w=1170&auto=format&fit=crop"
+             class="img-fluid" alt="Latest Smartphones">
+        <h5>Latest Smartphones</h5>
+        <p>Stay updated with the newest launches from Apple, Samsung, OnePlus, and more.</p>
+      </div>
     </div>
+
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+      <div class="service-card h-100">
+        <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1170&auto=format&fit=crop"
+             class="img-fluid" alt="Easy EMI">
+        <h5>Easy EMI Options</h5>
+        <p>Shop without worries with our flexible EMI and Buy Now, Pay Later options.</p>
+      </div>
+    </div>
+
+    <div class="col-md-4" data-aos="zoom-in" data-aos-delay="400">
+      <div class="service-card h-100">
+        <img src="https://plus.unsplash.com/premium_photo-1682088344933-f70f2a5a083f?q=80&w=1170&auto=format&fit=crop"
+             class="img-fluid" alt="Repair & Support">
+        <h5>Repair & Support</h5>
+        <p>Our experts provide fast repair services and 24/7 customer support for your devices.</p>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
