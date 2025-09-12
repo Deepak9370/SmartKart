@@ -6,80 +6,122 @@
 {% block content %}
 <style>
   body {
-    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
-                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
-    background-size: cover;
-    font-family: 'Poppins', sans-serif;
-    width:100%;
-    min-height:1000px;
+  .glass-box {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
+    border-radius: 20px;
+    padding: 50px 40px;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease;
   }
 
   .glass-box {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(18px);
     border-radius: 20px;
-    padding: 40px;
+    padding: 50px 40px;
     color: #fff;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     animation: fadeInUp 1s ease;
   }
 
   h2 {
     font-weight: 700;
     color: #00e5ff;
-    text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+    text-shadow: 0 0 12px rgba(0,229,255,0.6);
+    letter-spacing: 1px;
   }
 
   .highlight {
     font-weight: 600;
     color: #ffd740;
+    text-shadow: 0 0 10px rgba(255,215,64,0.7);
   }
 
   .accordion-item {
     background: rgba(255,255,255,0.08);
     border: none;
     border-radius: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 18px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .accordion-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.55);
   }
 
   .accordion-button {
     background: transparent;
     color: #fff;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 1.05rem;
     text-shadow: 1px 1px 6px rgba(0,0,0,0.5);
+    transition: color 0.3s ease, background 0.3s ease;
+    position: relative;
+    padding-right: 40px;
   }
   .accordion-button:focus {
     box-shadow: none;
   }
   .accordion-button:not(.collapsed) {
     color: #00e5ff;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.45);
+  }
+  .accordion-button:hover {
+    color: #ffd740;
+    background: linear-gradient(90deg, rgba(0,229,255,0.15), rgba(255,215,64,0.15));
+  }
+
+
+  /* Smooth expand */
+  .accordion-collapse {
+    transition: all 0.45s ease;
   }
 
   .accordion-body {
-    background: rgba(0,0,0,0.3);
-    color: #ddd;
+    background: rgba(0,0,0,0.35);
+    color: #e0e0e0;
     font-size: 0.95rem;
     padding: 20px;
+    line-height: 1.6;
+    animation: fadeIn 0.5s ease;
   }
+
+  /* Footer */
+  footer {
+    background: rgba(0,0,0,0.75);
+    color: #bbb;
+    text-align: center;
+    padding: 18px;
+    margin-top: 70px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    letter-spacing: 0.6px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  }
+
 
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
 </style>
 
 <div class="container mt-5">
-  <div class="glass-box text-center mb-4">
+  <div class="glass-box text-center mb-4" data-aos="zoom-in">
     <h2>Frequently Asked <span class="highlight">Questions</span></h2>
-    <p class="lead mt-2">Here are some common questions our customers ask before shopping at <b>PhoneHub</b>.</p>
+    <p class="lead mt-2">Find answers to common questions our customers ask before shopping at <b>PhoneHub</b>.</p>
   </div>
 
-  <div class="accordion" id="faqAccordion" data-aos="fade-up">
-    <div class="accordion-item">
+  <div class="accordion" id="faqAccordion">
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
       <h2 class="accordion-header">
         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
           Do you provide warranty on phones?
@@ -87,12 +129,12 @@
       </h2>
       <div id="faq1" class="accordion-collapse collapse show">
         <div class="accordion-body">
-          Yes, every phone sold at <b>PhoneHub</b> comes with a manufacturer warranty.
+          Yes, every phone sold at <b>PhoneHub</b> comes with an official manufacturer warranty. Warranty period usually ranges from 1 year to 2 years depending on the brand.
         </div>
       </div>
     </div>
 
-    <div class="accordion-item">
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
           What payment methods do you accept?
@@ -100,12 +142,12 @@
       </h2>
       <div id="faq2" class="accordion-collapse collapse">
         <div class="accordion-body">
-          We accept UPI, Debit/Credit cards, Net Banking, and Cash on Delivery.
+          We accept UPI, Debit/Credit Cards, Net Banking, EMI options, and Cash on Delivery. For high-value purchases, we also offer easy No-Cost EMI with leading banks.
         </div>
       </div>
     </div>
 
-    <div class="accordion-item">
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
       <h2 class="accordion-header">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
           Can I return or exchange a phone?
@@ -113,10 +155,51 @@
       </h2>
       <div id="faq3" class="accordion-collapse collapse">
         <div class="accordion-body">
-          Yes, we offer a 7-day hassle-free return/replacement policy for eligible devices.
+          Absolutely. We offer a 7-day hassle-free return or replacement policy for eligible devices, provided the product is unused and in original packaging.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+          How long does delivery take?
+        </button>
+      </h2>
+      <div id="faq4" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          Standard delivery takes 3-5 business days for most cities. In metro areas, we provide 1-2 day express delivery. You will receive real-time tracking updates once your order is shipped.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="500">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+          Are all phones 100% genuine?
+        </button>
+      </h2>
+      <div id="faq5" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          Yes. <b>PhoneHub</b> only sells 100% original and brand-sealed products. We source directly from authorized distributors and official partners.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item" data-aos="fade-up" data-aos-delay="600">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+          Do you offer customer support after purchase?
+        </button>
+      </h2>
+      <div id="faq6" class="accordion-collapse collapse">
+        <div class="accordion-body">
+          Yes. Our dedicated support team is available 7 days a week via phone, email, and live chat. You can also visit the nearest authorized service center for warranty-related queries.
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 {% endblock %}

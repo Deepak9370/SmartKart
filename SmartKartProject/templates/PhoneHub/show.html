@@ -1,12 +1,11 @@
 {% extends "layout.html" %}
 {% block title %}
-    <title>Show Phones | PhoneHub</title>
+<title>Show Phones | PhoneHub</title>
 {% endblock %}
 
 {% block content %}
 <style>
   body {
-    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
                 url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
     background-size: cover;
     font-family: 'Poppins', sans-serif;
@@ -15,11 +14,10 @@
   }
 
   .glass-container {
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
     padding: 30px;
     border-radius: 20px;
-    box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
     width: 95%;
     margin: 3% auto;
     animation: fadeInUp 1s ease;
@@ -27,199 +25,204 @@
 
   .glass-container h1 {
     text-align: center;
-    margin-bottom: 25px;
-    font-weight: 700;
+    margin-bottom: 40px;
+    font-weight: 800;
     color: #fff;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
-    animation: fadeZoom 1.2s ease;
+    text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+    font-size: 2.2rem;
   }
 
-  /* Search bar */
-  .search-bar {
-    text-align: right;
-    margin-bottom: 15px;
-  }
-  .search-bar input {
-    padding: 10px 15px;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    width: 250px;
-    max-width: 100%;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  /* Grid layout */
+  .phone-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
   }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 15px;
+  /* Phone card */
+  .phone-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     overflow: hidden;
-  }
-
-  thead {
-    background: linear-gradient(135deg, #16B9D3, #009688);
-    color: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-  }
-
-  th, td {
-    padding: 14px;
-    text-align: center;
-    color: #fff;
-  }
-
-  tbody tr {
-    background: rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-  }
-
-  tbody tr:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: scale(1.01);
-  }
-
-  /* Image styling */
-  td img {
-    max-width: 90px;
-    border-radius: 10px;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
-  td img:hover {
-    transform: scale(1.4);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+  .phone-card:hover {
+    transform: translateY(-5px);
   }
 
-  .btn {
-    border-radius: 10px;
+  .phone-image {
+    background: #f9f9f9;
+    text-align: center;
+    padding: 15px;
+  }
+  .phone-image img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: contain;
+  }
+
+  .phone-details {
+    padding: 15px;
+    flex-grow: 1;
+  }
+  .phone-details h5 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #333;
+  }
+  .phone-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  .phone-details ul li {
+    margin-bottom: 6px;
+  }
+
+  /* Ratings */
+  .rating {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .rating span {
+    background: #388e3c;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+  }
+  .rating small {
+    color: #777;
+  }
+
+  /* Bottom section */
+  .phone-bottom {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    text-align: center;
+  }
+  .phone-price h4 {
+    color: #e53935;
+    font-weight: 700;
+    margin-bottom: 5px;
+  }
+  .phone-price small {
+    text-decoration: line-through;
+    color: #888;
+  }
+
+  h1 {
+    font-weight: 700;
+    color: #040300;
+    text-shadow: 1px 1px 10px #110e0e99;
+  }
+
+  .highlight {
+    font-weight: 600;
+    color: #040300;
+  }
+
+  .action-buttons {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .action-buttons .btn {
     padding: 6px 14px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    border: none;
-    cursor: pointer;
+    font-size: 13px;
+    border-radius: 8px;
   }
-
   .btn-warning {
-    background: linear-gradient(135deg, #ff9800, #f57c00);
+    background: #ff9800;
     color: #fff;
   }
-  .btn-warning:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(245,124,0,0.5);
-  }
-
   .btn-danger {
-    background: linear-gradient(135deg, #e53935, #b71c1c);
+    background: #e53935;
     color: #fff;
-  }
-  .btn-danger:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(183,28,28,0.5);
   }
 
   .btn-primary {
-    background: linear-gradient(135deg, #673ab7, #3f51b5);
+    background: #3f51b5;
     color: #fff;
-    margin-top: 20px;
-  }
-  .btn-primary:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 6px 15px rgba(63,81,181,0.5);
+    padding: 10px 20px;
+    margin-top: 25px;
+    border-radius: 10px;
   }
 
   @keyframes fadeInUp {
     from { transform: translateY(40px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
   }
-  @keyframes fadeZoom {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
-
-  /* Responsive */
-  @media(max-width: 768px) {
-    table, thead, tbody, th, td, tr {
-      display: block;
-    }
-    thead {
-      display: none;
-    }
-    tbody tr {
-      margin-bottom: 15px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.08);
-      padding: 12px;
-    }
-    td {
-      display: flex;
-      justify-content: space-between;
-      padding: 8px 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    td:before {
-      content: attr(data-label);
-      font-weight: 600;
-      color: #16B9D3;
-    }
-  }
 </style>
 
 <div class="glass-container">
-  <h1>📱 Phone Data</h1>
+  <div class="glass-box row align-items-center mb-5">
+      <h1> <span class="highlight">📱 Phone Collection</span></h1>
 
 
-  <table id="phoneTable">
-      <thead>
-        <tr>
-            <th>ID</th>
-            <th>Image</th>
-            <th>Brand</th>
-            <th>Name</th>
-            <th>Camera</th>
-            <th>Ram</th>
-            <th>Storage</th>
-            <th>Price</th>
-            <th>Update</th>
-            <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for phone in Phone_object_qs %}
-            <tr>
-                <td data-label="ID">{{phone.id}}</td>
-                <td data-label="Image">
-                    {% if phone.image %}
-                      <img src="{{ phone.image.url }}" alt="{{ phone.name }}">
-                    {% else %}
-                      <p>No image</p>
-                    {% endif %}
-                </td>
-                <td data-label="Brand">{{phone.brand}}</td>
-                <td data-label="Name">{{phone.name}}</td>
-                <td data-label="Camera">{{phone.camera}}</td>
-                <td data-label="Ram">{{phone.ram}}</td>
-                <td data-label="Storage">{{phone.storage}}</td>
-                <td data-label="Price">₹{{phone.price}}</td>
-                <td data-label="Update">
-                  <a href="{% url 'update-phone' phone.id %}">
-                    <button class="btn btn-warning">Update</button>
-                  </a>
-                </td>
-                <td data-label="Delete">
-                  <a href="{% url 'delete-phone' phone.id %}">
-                    <button class="btn btn-danger">Delete</button>
-                  </a>
-                </td>
-            </tr>
-        {% endfor %}
-      </tbody>
-  </table>
+  <div class="phone-grid">
+    {% for phone in Phone_object_qs %}
+    <div class="phone-card">
+      <!-- Phone Image -->
+      <div class="phone-image">
+        {% if phone.image %}
+          <img src="{{ phone.image.url }}" alt="{{ phone.name }}">
+        {% else %}
+          <img src="https://source.unsplash.com/200x200/?smartphone" alt="No image">
+        {% endif %}
+      </div>
 
-  <br>
-  {% for msg in massages %}
-      <p class="alert alert-danger text-center"> {{msg}} </p>
-  {% endfor %}
+      <!-- Phone Details -->
+      <div class="phone-details">
+        <h5>{{ phone.brand }} - {{ phone.name }}</h5>
+
+        <!-- Rating -->
+        <div class="rating">
+          <span>4.3 ★</span> <small>6,345 Ratings & 275 Reviews</small>
+        </div>
+
+        <ul>
+          <li><strong>Camera:</strong> {{ phone.camera }}</li>
+          <li><strong>RAM:</strong> {{ phone.ram }}</li>
+          <li><strong>Storage:</strong> {{ phone.storage }}</li>
+          <li><strong>Battery:</strong> {{ phone.battery|default:"N/A" }}</li>
+          <li><strong>Processor:</strong> {{ phone.processor|default:"N/A" }}</li>
+        </ul>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="phone-bottom">
+        <div class="phone-price">
+          <h4>₹{{ phone.price }}</h4>
+          <small>₹{{ phone.price|add:"2000" }}</small>
+        </div>
+        <div class="action-buttons">
+          <a href="{% url 'update-phone' phone.id %}">
+            <button class="btn btn-warning">Update</button>
+          </a>
+          <a href="{% url 'delete-phone' phone.id %}">
+            <button class="btn btn-danger">Delete</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="col-12 text-center text-white">
+      <h4>No phones available at the moment.</h4>
+    </div>
+    {% endfor %}
+  </div>
 
   <div class="text-center">
     <a href="{% url 'add-phone' %}">
@@ -227,6 +230,4 @@
     </a>
   </div>
 </div>
-
-
 {% endblock %}

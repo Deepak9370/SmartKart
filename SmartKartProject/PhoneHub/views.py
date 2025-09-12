@@ -97,4 +97,8 @@ def faqView(request):
     context={}
     return render(request, templates, context)
 
+def contactView(request):
+    templates="PhoneHub/contact.html"
+    context={}
+    return render(request, templates, context)
 

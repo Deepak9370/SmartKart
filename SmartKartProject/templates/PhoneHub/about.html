@@ -5,17 +5,16 @@
 
 {% block content %}
 <style>
-  body {
-    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
-                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
-    background-size: cover;
-    font-family: 'Poppins', sans-serif;
-    width:100%;
-    min-height:1000px;
-  }
+    body{
+       background: linear-gradient(180deg, rgba(9,10,14,0.85), rgba(7,12,20,0.95)),
+       url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+       font-family: Inter, system-ui, sans-serif;
+       color:#e6eef8;
+    }
+
 
   .glass-box {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(15px);
     border-radius: 20px;
     padding: 40px;
@@ -23,31 +22,14 @@
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     animation: fadeInUp 1s ease;
   }
-
   h2, h3 {
     font-weight: 700;
     color: #00e5ff;
     text-shadow: 1px 1px 10px rgba(0,0,0,0.6);
   }
-
-  .highlight {
-    font-weight: 600;
-    color: #ffd740;
-  }
-
-  .btn-primary {
-    background: linear-gradient(135deg, #673ab7, #3f51b5);
-    border: none;
-    border-radius: 12px;
-    transition: 0.3s;
-  }
-  .btn-primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(63,81,181,0.5);
-  }
-
+  .highlight { color: #ffd740; font-weight: 600; }
   .icon-card {
-    background: rgba(10, 223, 223, 0.171);
+    background: rgba(255,255,255,0.08);
     padding: 20px;
     border-radius: 15px;
     text-align: center;
@@ -62,15 +44,9 @@
     color: #00e5ff;
     margin-bottom: 15px;
   }
-
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
 </style>
 
 <div class="container mt-5">
-  <!-- About Section -->
   <div class="glass-box row align-items-center mb-5">
     <div class="col-md-6 mb-4" data-aos="fade-right">
       <h2>About <span class="highlight">PhoneHub</span></h2>
@@ -79,8 +55,8 @@
         Our mission is to make cutting-edge technology affordable and accessible to everyone.
       </p>
       <p>
-        Whether you're a <b>tech enthusiast</b> looking for the latest flagship model or someone searching for a budget-friendly device, PhoneHub has something for you.
-        With <span class="highlight">easy ordering</span>, <span class="highlight">secure payments</span>, and <span class="highlight">fast delivery</span>, we ensure a smooth shopping experience every time.
+        Whether you're a <b>tech enthusiast</b> or looking for a budget-friendly device, PhoneHub has something for you.
+        With <span class="highlight">easy ordering</span>, <span class="highlight">secure payments</span>, and <span class="highlight">fast delivery</span>, we ensure a smooth shopping experience.
       </p>
       <a href="{% url 'show-phone' %}" class="btn btn-lg btn-primary mt-3">📱 Explore Phones</a>
     </div>
@@ -90,7 +66,6 @@
     </div>
   </div>
 
-  <!-- Why Choose Us -->
   <div class="text-center mb-5">
     <h3>Why Choose <span class="highlight">PhoneHub?</span></h3>
   </div>
@@ -99,7 +74,7 @@
       <div class="icon-card">
         <i class="fas fa-bolt"></i>
         <h5>Fast Delivery</h5>
-        <p>We deliver your smartphones at lightning speed, right to your doorstep.</p>
+        <p>We deliver smartphones at lightning speed, right to your doorstep.</p>
       </div>
     </div>
     <div class="col-md-4 mb-4">
@@ -119,6 +94,5 @@
   </div>
 </div>
 
-<!-- FontAwesome for Icons -->
 <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
 {% endblock %}

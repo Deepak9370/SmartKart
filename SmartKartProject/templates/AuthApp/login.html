@@ -2,99 +2,127 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-<title>Login | PhoneHub</title>
+  <title>Login | PhoneHub</title>
 {% endblock %}
 
 {% block content %}
+<!-- Modern Login Page -->
 <style>
-  body {
-    background: linear-gradient(rgba(22,185,211,0.6), rgba(0,0,0,0.7)),
-                url('https://source.unsplash.com/1920x1080/?smartphone,technology') no-repeat center fixed;
-    background-size: cover;
-    font-family: 'Poppins', sans-serif;
-    width:100%;
-    min-height:1000px;
+  :root{
+    --accent-1:#06b6d4;
+    --accent-2:#7c3aed;
+    --glass:rgba(255,255,255,0.08);
+    --glass-strong:rgba(255,255,255,0.12);
+    --radius:18px;
+    --shadow:0 12px 32px rgba(2,6,23,0.55);
   }
 
-  .login-container {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
+  body{
+    background: linear-gradient(180deg, rgba(9,10,14,0.85), rgba(7,12,20,0.95)),
+                url('https://th.bing.com/th/id/OIP.fb70KEQ539-fAUw2hXcsagHaFy?w=220&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3') center/cover no-repeat;
+    font-family: Inter, system-ui, sans-serif;
+    color:#e6eef8;
+    min-height:100auto;
+  }
+
+  .login-container{
+    background: linear-gradient(180deg,var(--glass-strong),var(--glass));
+    backdrop-filter: blur(14px) saturate(130%);
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-    width: 450px;
-    margin: 5% auto;
-    animation: fadeInUp 1s ease;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    width: 420px;
+    margin: 6% auto;
+    animation: fadeInUp 0.9s ease;
+    border: 1px solid rgba(255,255,255,0.06);
   }
 
-  .login-container h1 {
+  .login-container h1{
     text-align: center;
-    margin-bottom: 30px;
-    font-weight: 700;
-    color: #fff;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+    margin-bottom: 28px;
+    font-weight: 800;
+    font-size: 28px;
+    background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
     animation: fadeZoom 1.2s ease;
   }
 
-  label {
-    color: #fff;
+  label{
     font-weight: 500;
-    margin-bottom: 8px;
-    display: block;
+    color:#dbeafe;
+    margin-bottom: 6px;
+    display:block;
   }
 
-  .form-control {
-    margin-bottom: 18px;
-    border-radius: 12px;
-    border: none;
-    padding: 12px;
-    transition: 0.3s ease;
+  .form-control{
+    margin-bottom:18px;
+    border-radius:12px;
+    border:none;
+    padding:12px;
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    transition:0.3s ease;
+  }
+  .form-control:focus{
+    outline:2px solid var(--accent-1);
+    background:rgba(255,255,255,0.12);
+    box-shadow:0 0 14px rgba(6,182,212,0.6);
   }
 
-  .form-control:focus {
-    transform: scale(1.02);
-    box-shadow: 0 0 12px rgba(22,185,211,0.7);
-    outline: none;
+  .btn{
+    border-radius:12px;
+    padding:12px 22px;
+    font-weight:700;
+    transition: all 0.3s ease;
+    letter-spacing:0.4px;
+    width:100%;
+    margin-bottom:10px;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--accent-2),var(--accent-1));
+    color:#041126;
+    border:none;
+    box-shadow:0 8px 20px rgba(124,58,237,0.25);
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 28px rgba(124,58,237,0.35);
+  }
+  .btn-ghost{
+    background:transparent;
+    color:#e6eef8;
+    border:1px solid rgba(255,255,255,0.1);
+  }
+  .btn-ghost:hover{
+    background:rgba(255,255,255,0.06);
+    transform:translateY(-2px);
   }
 
-  .btn {
-    border-radius: 12px;
-    padding: 10px 22px;
-    transition: all 0.3s ease-in-out;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+  .forgot-link{
+    display:block;
+    text-align:center;
+    margin-bottom:18px;
+    font-size:14px;
+    color:var(--accent-1);
+    text-decoration:none;
+    transition:0.3s;
+  }
+  .forgot-link:hover{ color:var(--accent-2); text-decoration:underline; }
+
+
+
+  @keyframes fadeInUp{
+    from{ transform:translateY(40px); opacity:0; }
+    to{ transform:translateY(0); opacity:1; }
+  }
+  @keyframes fadeZoom{
+    from{ transform:scale(0.85); opacity:0; }
+    to{ transform:scale(1); opacity:1; }
   }
 
-  .btn-success {
-    background: linear-gradient(135deg, #16B9D3, #009688);
-    border: none;
-    color: #fff;
-  }
-
-  .btn-success:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,150,136,0.5);
-  }
-
-  .btn-info {
-    background: linear-gradient(135deg, #673ab7, #3f51b5);
-    border: none;
-    color: #fff;
-  }
-
-  .btn-info:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(63,81,181,0.5);
-  }
-
-  @keyframes fadeInUp {
-    from { transform: translateY(40px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
-
-  @keyframes fadeZoom {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
+  @media(max-width:600px){
+    .login-container{ width:90%; padding:30px 24px; }
   }
 </style>
 
@@ -112,16 +140,12 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="pw" class="form-control" placeholder="Enter Password" required>
     </div>
-    <div class="text-center ">
-      <a href="{% url 'password_reset' %}" style="color:#fff; text-decoration:underline;">
-        Forgot your password?
-      </a>
-    </div>
 
+    <a href="{% url 'password_reset' %}" class="forgot-link">Forgot your password?</a>
 
-    <div class="text-center mt-4">
-      <input type="submit" value="Login" class="btn btn-success">
-      <a href="{% url 'register' %}" class="btn btn-info">Create Account</a>
+    <div class="text-center mt-3">
+      <button type="submit" class="btn btn-primary">Login</button>
+      <a href="{% url 'register' %}" class="btn btn-ghost">Create Account</a>
     </div>
   </form>
 </div>

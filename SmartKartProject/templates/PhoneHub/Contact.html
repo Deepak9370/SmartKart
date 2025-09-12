@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Contact Us | PhoneHub</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    body{
+       background: linear-gradient(180deg, rgba(9, 10, 14, 0.489), rgba(7, 12, 20, 0.516)),
+       url('https://th.bing.com/th/id/OIP.68TsUAXNXiaO-1ReBYU6vgHaEB?w=332&h=181&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3') center/cover no-repeat;
+       font-family: Inter, system-ui, sans-serif;
+       color:#e6eef8;
+    }
+
+  .contact-hero {
+    background: linear-gradient(135deg, #4facfe8a, #00f1fea3);
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 16px;
+    margin-bottom: 50px;
+  }
+  .info-box {
+    background: #5995bd84;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.634);
+    transition: 0.3s;
+    margin-bottom: 20px;
+  }
+  .info-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba((0, 0, 0, 0.779));
+  }
+</style>
+
+<div class="container">
+  <div class="contact-hero" data-aos="zoom-in">
+    <h1>📞 Contact Us</h1>
+    <p>We’d love to hear from you! Get in touch with our team.</p>
+  </div>
+
+  <div class="row justify-content-center g-4">
+    <div class="col-md-6 col-lg-5" data-aos="fade-left">
+      <div class="info-box">
+        <h5>📍 Address</h5>
+        <p>123 PhoneHub Street, Tech City, India</p>
+      </div>
+      <div class="info-box">
+        <h5>📧 Email</h5>
+        <p>support@phonehub.com</p>
+      </div>
+      <div class="info-box">
+        <h5>☎ Phone</h5>
+        <p>+91 1234567899</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
