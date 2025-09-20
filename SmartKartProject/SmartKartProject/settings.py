@@ -150,7 +150,7 @@ EMAIL_HOST = 'smtp.gmail.com'   # or your provider
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'deepaksurykantrathod@gmail.com'      # your email
-EMAIL_HOST_PASSWORD = 'nnze oaxs ctdc yhko'     # app password (not Gmail password)
+EMAIL_HOST_PASSWORD = ''     # app password (not Gmail password)
 DEFAULT_FROM_EMAIL =EMAIL_HOST_USER
 
 
